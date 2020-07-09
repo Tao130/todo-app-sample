@@ -6,9 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "todo_table")
 data class Todo(
-    @ColumnInfo(name = "todo_name")
-    var todoName: String,
-
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    @PrimaryKey(autoGenerate = true) var id: Int = 0,
+    @ColumnInfo(name = "todo_name") var todoName: String
 )
