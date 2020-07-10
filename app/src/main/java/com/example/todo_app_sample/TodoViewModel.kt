@@ -30,4 +30,12 @@ class TodoViewModel(
             todoDao.getAllTodo()
         }
     }
+
+    fun deleteTodo(todo: Todo) = viewModelScope.launch {
+        todoDao.deleteTodo(todo)
+    }
+
+    fun updateTodo(todo: Todo) = viewModelScope.launch {
+        todoDao.updateTodo(todo)
+    }
 }
