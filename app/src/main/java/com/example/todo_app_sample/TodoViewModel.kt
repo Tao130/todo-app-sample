@@ -22,20 +22,24 @@ class TodoViewModel(
     }
 
     private fun initializeTodoList() = viewModelScope.launch {
-        _todoList.value = getTodoListFromDatabase()
+        _todoList.value = getTodoListFromDatabase().value
     }
 
-    private suspend fun getTodoListFromDatabase(): List<Todo> {
+    private suspend fun getTodoListFromDatabase(): LiveData<List<Todo>> {
         return withContext(Dispatchers.IO) {
             todoDao.getAllTodo()
         }
     }
 
-    fun deleteTodo(todo: Todo) = viewModelScope.launch {
+    fun deleteTodo(todo: Todo) = viewModelScope.launch(Dispatchers.IO) {
         todoDao.deleteTodo(todo)
     }
 
     fun updateTodo(todo: Todo) = viewModelScope.launch {
         todoDao.updateTodo(todo)
+    }
+
+    fun insertTodo(todo: Todo) = viewModelScope.launch(Dispatchers.IO) {
+        todoDao.insertTodo(todo)
     }
 }

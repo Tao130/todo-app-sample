@@ -1,6 +1,7 @@
 package com.example.todo_app_sample
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todo_app_sample.databinding.FragmentTodoBinding
+import kotlinx.android.synthetic.main.fragment_todo.*
 
 
 class TodoFragment : Fragment() {
@@ -43,10 +45,16 @@ class TodoFragment : Fragment() {
         // todoListの監視
         todoViewModel.todoList.observe(
             viewLifecycleOwner, Observer {
+                Log.i("tag", it.toString())
                 it?.let {
                     adapter.setTodoList(it)
                 }
             })
+        binding.insertButton.setOnClickListener {
+            val newTodo = Todo(todoName = insert_todo_name.text.toString())
+            todoViewModel.insertTodo(newTodo)
+            insert_todo_name.text.clear()
+        }
 
         return binding.root
     }
