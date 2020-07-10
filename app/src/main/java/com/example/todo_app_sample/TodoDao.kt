@@ -15,7 +15,7 @@ interface TodoDao {
     fun deleteTodo(todo: Todo)
 
     @Query("SELECT * FROM todo_table")
-    fun getAllTodo(): LiveData<List<Todo>>
+    fun getAllTodo(): List<Todo>
 
     @Query("DELETE FROM todo_table")
     fun deleteAllTodo()
