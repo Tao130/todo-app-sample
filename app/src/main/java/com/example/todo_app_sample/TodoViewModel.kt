@@ -13,9 +13,9 @@ class TodoViewModel(
     private val todoDao: TodoDao,
     application: Application) : AndroidViewModel(application) {
 
-    private var _todoList = MutableLiveData<List<Todo>>()
-    val todoList: LiveData<List<Todo>>
-        get() = _todoList
+    // カプセル化 MutableLiveDataをViewへ公開しないようにする
+    private val _todoList = MutableLiveData<List<Todo>>()
+    val todoList: LiveData<List<Todo>> = _todoList
 
     init {
         initializeTodoList()
