@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,7 +35,14 @@ class TodoFragment : Fragment() {
         binding.todoViewModel = todoViewModel
 
         val clickListener = TodoClickListener(
-            { todoViewModel.deleteTodo(it) },
+            { todo ->
+                todoViewModel.deleteTodo(todo)
+                Toast.makeText(
+                    context,
+                    "${todo.todoName}を削除しました",
+                    Toast.LENGTH_LONG
+                ).show()
+            },
             { todoViewModel.updateTodo(it) }
         )
         val adapter = TodoListAdapter(clickListener)

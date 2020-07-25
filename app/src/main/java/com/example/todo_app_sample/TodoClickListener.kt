@@ -5,6 +5,6 @@ class TodoClickListener(
     private val clickListenerUpdate: (todo: Todo) -> Unit
 
 ) {
-    fun onClickDelete(todo: Todo) = clickListenerDelete
-    fun onclickUpDate(todo: Todo) = clickListenerUpdate
+    fun onClickDelete(todo: Todo) = clickListenerDelete(todo)
+    fun onclickUpDate(todo: Todo) = clickListenerUpdate(todo)
 }
