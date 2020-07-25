@@ -45,11 +45,11 @@ class TodoFragment : Fragment() {
         // todoListの監視
         todoViewModel.todoList.observe(
             viewLifecycleOwner, Observer {
-                Log.i("tag", it.toString())
                 it?.let {
                     adapter.setTodoList(it)
                 }
             })
+
         binding.insertButton.setOnClickListener {
             val newTodo = Todo(todoName = insert_todo_name.text.toString())
             todoViewModel.insertTodo(newTodo)
