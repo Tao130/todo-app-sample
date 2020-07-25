@@ -2,6 +2,7 @@ package com.example.todo_app_sample
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,11 +38,14 @@ class TodoFragment : Fragment() {
         val clickListener = TodoClickListener(
             { todo ->
                 todoViewModel.deleteTodo(todo)
-                Toast.makeText(
+                val toast = Toast.makeText(
                     context,
                     "${todo.todoName}を削除しました",
                     Toast.LENGTH_LONG
-                ).show()
+                )
+                // トースト表示位置を上部に変更
+                toast.setGravity(Gravity.TOP, 0, 0)
+                toast.show()
             },
             { todoViewModel.updateTodo(it) }
         )
