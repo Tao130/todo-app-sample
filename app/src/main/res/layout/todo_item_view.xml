@@ -41,7 +41,7 @@
                 android:id="@+id/delete_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="削除"
+                android:text="@string/delete"
                 app:layout_constraintBottom_toBottomOf="@+id/button3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/button3"
@@ -51,7 +51,7 @@
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="更新"
+                android:text="@string/update"
                 app:layout_constraintBottom_toBottomOf="@+id/textView"
                 app:layout_constraintEnd_toStartOf="@+id/delete_button"
                 app:layout_constraintTop_toTopOf="@+id/textView" />
