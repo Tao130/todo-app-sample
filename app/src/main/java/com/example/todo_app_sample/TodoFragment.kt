@@ -51,6 +51,7 @@ class TodoFragment : Fragment() {
         )
         val adapter = TodoListAdapter(clickListener)
         val recyclerView = binding.recyclerView
+        recyclerView.overScrollMode = View.OVER_SCROLL_NEVER
         recyclerView.layoutManager = LinearLayoutManager(this.context)
         recyclerView.adapter = adapter
 
